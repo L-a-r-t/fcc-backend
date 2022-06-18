@@ -19,6 +19,10 @@ app.get('/', (req, res) => {
 
 app.post('/api/shorturl', async (req, res) => {
   const {url} = req.body;
+  if (!/^(https?:\/\/)/.test(url)) {
+    res.json({error: 'invalid url'});
+    return
+  }
   const dns = require('dns');
   const host = url.split('//')[2];
   let error = false;

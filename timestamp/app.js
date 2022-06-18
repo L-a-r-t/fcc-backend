@@ -22,7 +22,7 @@ app.get("/api/:date?", (req, res) => {
     const isUnix = !isNaN(Number(date)) && new Date(Number(date));
     const isUtc = !isNaN(Date.parse(date));
     if (isUnix) {
-      res.json({unix: date, utc: new Date(Number(date)).toUTCString()})
+      res.json({unix: Number(date), utc: new Date(Number(date)).toUTCString()})
       return
     }
     if (isUtc) {

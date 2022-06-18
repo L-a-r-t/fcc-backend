@@ -16,17 +16,17 @@ app.get('/', (req, res) => {
 app.get("/api/:date?", (req, res) => {
     const {date} = req.params;
     if (!date) {
-      res.json({unix: Date.now(), utc: new Date()})
+      res.json({unix: Date.now(), utc: new Date().toUTCString()})
       return
     }
     const isUnix = !isNaN(Number(date)) && new Date(date * 1000);
     const isUtc = !isNaN(Date.parse(date));
     if (isUnix) {
-      res.json({unix: date, utc: new Date(date * 1000)})
+      res.json({unix: date, utc: new Date(date * 1000).toUTCString()})
       return
     }
     if (isUtc) {
-      res.json({unix: Date.parse(date), utc: new Date(date)})
+      res.json({unix: Date.parse(date), utc: new Date(date).toUTCString()})
       return 
     }
     res.json({error: 'invalid date'});

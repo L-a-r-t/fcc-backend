@@ -28,3 +28,23 @@ footer {
     position: absolute;
     bottom: 0;
 }
+
+a {
+    color: black;
+}
+
+#form-wrapper {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 1rem;
+    border: 2px solid black;
+}
+
+#form-wrapper > input {
+    margin-left: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+}

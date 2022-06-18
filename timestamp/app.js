@@ -19,10 +19,10 @@ app.get("/api/:date?", (req, res) => {
       res.json({unix: Date.now(), utc: new Date().toUTCString()})
       return
     }
-    const isUnix = !isNaN(Number(date)) && new Date(date * 1000);
+    const isUnix = !isNaN(Number(date)) && new Date(date);
     const isUtc = !isNaN(Date.parse(date));
     if (isUnix) {
-      res.json({unix: date, utc: new Date(date * 1000).toUTCString()})
+      res.json({unix: date, utc: new Date(date).toUTCString()})
       return
     }
     if (isUtc) {
